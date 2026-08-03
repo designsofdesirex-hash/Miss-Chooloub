@@ -75,6 +75,7 @@ a {
 .age-gate.hidden {
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
 .age-gate-content {

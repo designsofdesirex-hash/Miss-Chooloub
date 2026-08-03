@@ -15,21 +15,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!rulesModal) return;
 
-  btnRulesYes.addEventListener('click', () => {
-    // Hide modal
-    rulesModal.style.display = 'none';
-    
-    // Show form container
-    standardFormContainer.style.display = 'block';
-    
-    // Load tally form
-    if (!standardTally.src || standardTally.src === 'about:blank' || standardTally.src.endsWith('about:blank')) {
-      standardTally.src = standardTally.dataset.src;
-    }
-  });
+  if (btnRulesYes) {
+    btnRulesYes.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Hide modal
+      rulesModal.style.display = 'none';
+      
+      // Show form container
+      if (standardFormContainer) {
+        standardFormContainer.style.display = 'block';
+      }
+      
+      // Load tally form
+      if (standardTally && (!standardTally.src || standardTally.src === 'about:blank' || standardTally.src.endsWith('about:blank'))) {
+        if (standardTally.dataset && standardTally.dataset.src) {
+          standardTally.src = standardTally.dataset.src;
+        }
+      }
+    });
+  }
 
-  btnRulesNo.addEventListener('click', () => {
-    window.location.href = 'rules.html';
-  });
+  if (btnRulesNo) {
+    btnRulesNo.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'rules.html';
+    });
+  }
 
 });

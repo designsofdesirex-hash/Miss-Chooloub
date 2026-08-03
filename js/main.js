@@ -5,28 +5,67 @@
 /* ------------------------------------------
    1. AGE GATE
    ------------------------------------------ */
+function safeGetStorage(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (e) {
+    try {
+      return sessionStorage.getItem(key);
+    } catch (err) {
+      return null;
+    }
+  }
+}
+
+function safeSetStorage(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (e) {
+    try {
+      sessionStorage.setItem(key, value);
+    } catch (err) {
+      // Storage unavailable, proceed without persistence
+    }
+  }
+}
+
 function initAgeGate() {
   const gate = document.getElementById('ageGate');
   const enter = document.getElementById('ageEnter');
   const leave = document.getElementById('ageLeave');
   if (!gate) return;
 
-  if (localStorage.getItem('ml_age_verified')) {
+  const hideGate = () => {
     gate.classList.add('hidden');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      gate.style.display = 'none';
+    }, 600);
+  };
+
+  if (safeGetStorage('ml_age_verified') === 'true') {
+    gate.classList.add('hidden');
+    gate.style.display = 'none';
+    document.body.style.overflow = '';
     return;
   }
 
   document.body.style.overflow = 'hidden';
 
-  enter.addEventListener('click', () => {
-    localStorage.setItem('ml_age_verified', 'true');
-    gate.classList.add('hidden');
-    document.body.style.overflow = '';
-  });
+  if (enter) {
+    enter.addEventListener('click', (e) => {
+      e.preventDefault();
+      safeSetStorage('ml_age_verified', 'true');
+      hideGate();
+    });
+  }
 
-  leave.addEventListener('click', () => {
-    window.location.href = 'https://google.com';
-  });
+  if (leave) {
+    leave.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'https://google.com';
+    });
+  }
 }
 
 /* ------------------------------------------
