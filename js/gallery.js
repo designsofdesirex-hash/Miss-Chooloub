@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (item.type === 'video') {
         tile.innerHTML = `
-          <video src="${item.src}" preload="metadata" muted loop playsinline></video>
+          <video src="${item.src}" poster="${item.poster || \'\'}" preload="metadata" muted loop playsinline></video>
           <div class="gallery-play-icon">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
