@@ -286,7 +286,7 @@ function initHomepageHighlights() {
   const container = document.getElementById('homepageHighlights');
   if (!container || !window.GALLERY_VIDEOS || !window.GALLERY_IMAGES) return;
 
-  const allItems = [...window.GALLERY_VIDEOS, ...window.GALLERY_IMAGES];
+  const allItems = [...window.GALLERY_IMAGES];
   if (!allItems.length) return;
 
   for (let i = allItems.length - 1; i > 0; i--) {

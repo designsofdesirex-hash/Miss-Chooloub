@@ -18,16 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const videos = window.GALLERY_VIDEOS || [];
   const images = window.GALLERY_IMAGES || [];
 
-  // Interleave logic: 1 video for every 6 images
-  let vIdx = 0, iIdx = 0;
-  while (vIdx < videos.length || iIdx < images.length) {
-    for (let i = 0; i < 6 && iIdx < images.length; i++) {
-      allMediaItems.push(images[iIdx++]);
-    }
-    if (vIdx < videos.length) {
-      allMediaItems.push(videos[vIdx++]);
-    }
-  }
+  // Pure photo dataset
+  allMediaItems = [...images];
 
   // Fisher-Yates Random Shuffle so media appears in random order each load!
   for (let i = allMediaItems.length - 1; i > 0; i--) {
