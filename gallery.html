@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Gallery — Miss Chooloub</title>
+ <meta name="description" content="Evidence of devotion. Curated imagery and content from Miss Chooloub — photos, videos, outfits and tools.">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="css/styles.css?v=5.0">
+</head>
+<body>
+
+ <div class="age-gate" id="ageGate">
+  <div class="age-gate-content">
+   <div class="age-gate-logo">Miss Chooloub</div>
+   <p class="age-gate-text">This site contains adult content.<br>You must be 18 or older to enter.</p>
+   <div class="age-gate-actions">
+    <button class="btn btn-primary" id="ageEnter">E N T E R</button>
+    <button class="btn btn-ghost" id="ageLeave">L E A V E</button>
+   </div>
+  </div>
+ </div>
+
+ <div class="cursor-ring" id="cursorRing"></div>
+
+ <nav class="nav" id="nav">
+  <a href="index.html" class="nav-brand">
+   <div class="nav-logo">Miss Chooloub</div>
+   <div class="nav-motto">Your Eternal Addiction</div>
+  </a>
+  <div class="nav-links" id="navLinks">
+   <a href="index.html" class="nav-link">H O M E</a>
+   <a href="rules.html" class="nav-link">R U L E S  &  S E R V I C E S</a>
+   <a href="gallery.html" class="nav-link nav-link--active">G A L L E R Y</a>
+   <a href="booking.html" class="nav-link">B O O K I N G</a>
+  </div>
+  <div class="nav-socials">
+   <a href="https://www.patreon.com/chooloub?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnZ6oewG3zXr4uFzJ9KGKVev-VEeVadtp3zo4Igz9Ui0YmmITmmgxIVTxA6po_aem_offaF6tGp8tZAnpLwFe5dA" target="_blank" rel="noopener" class="nav-social" aria-label="Patreon">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="10" fill="currentColor" stroke="none">P</text></svg>
+   </a>
+   <a href="https://www.instagram.com/chooloub" target="_blank" rel="noopener" class="nav-social" aria-label="Instagram">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+   </a>
+   
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+   <span></span><span></span><span></span>
+  </button>
+ </nav>
+
+ <!-- HERO -->
+ <section class="hero hero--small">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+   <h1 class="hero-title">The Gallery</h1>
+
+   <div class="hero-specialties">
+    <div class="specialty-item">Sweet</div>
+    <div class="specialty-item">Lovely</div>
+    <div class="specialty-item">Beautiful</div>
+    <div class="specialty-item">Radiant</div>
+    <div class="specialty-item">Joyful</div>
+    <div class="specialty-item">Charming</div>
+   </div>
+  </div>
+ </section>
+
+ <!-- GALLERY -->
+ <section class="section section--dark">
+  <div class="section-inner">
+
+   <div class="filter-tabs">
+    <button class="filter-tab active" data-filter="all">A L L</button>
+    <button class="filter-tab" data-filter="photo">P H O T O S</button>
+    <button class="filter-tab" data-filter="video">V I D E O S</button>
+   </div>
+
+   <div class="gallery-grid">
+    <!-- Initial 27 Uniform 1:1 Tiles (Lightest Assets) -->
+    <div class="gallery-tile" data-category="outfit">
+     <img src="Assets/webp/miss-chooloub-cartoonsview-1737731708-3552673526999130601-65857310129-0004.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1569708018-2143188650933164929-8706715131-0023.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1569950924-2145226294047515568-8706715131-0040.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="outfit">
+     <img src="Assets/webp/miss-chooloub-chooloub-1570199723-2147313371186539468-8706715131-0058.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1570839664-2152681591278063755-8706715131-0088.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1571426510-2157604406137556804-8706715131-0109.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile gallery-tile--video" data-category="video">
+     <video src="Assets/Vid_optimized/miss-chooloub-chooloub-1611459197-2493417653082220720-8706715131-032.mp4" preload="metadata" muted loop playsinline></video>
+     <div class="gallery-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">Play Video →</span></div>
+    </div>
+    <div class="gallery-tile gallery-tile--video" data-category="video">
+     <video src="Assets/Vid_optimized/miss-chooloub-chooloub-1628727221-2638272451563794871-8706715131-040.mp4" preload="metadata" muted loop playsinline></video>
+     <div class="gallery-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">Play Video →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1571778525-2160557326663469309-8706715131-0133.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1572474677-2166397074141456524-8706715131-0156.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1572984712-2170675552578776674-8706715131-0196.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1573231799-2172748267264496667-8706715131-0212.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile gallery-tile--video" data-category="video">
+     <video src="Assets/Vid_optimized/miss-chooloub-chooloub-1611459197-2493417653082220720-8706715131-032.mp4" preload="metadata" muted loop playsinline></video>
+     <div class="gallery-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">Play Video →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1573514240-2175117555254404078-8706715131-0227.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1574033135-2179470361197041743-8706715131-0245.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1574483389-2183247369144290806-8706715131-0260.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1574894305-2186694379855861060-8706715131-0276.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1575161403-2188934959864388578-8706715131-0291.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile gallery-tile--video" data-category="video">
+     <video src="Assets/Vid_optimized/miss-chooloub-chooloub-1628727221-2638272451563794871-8706715131-040.mp4" preload="metadata" muted loop playsinline></video>
+     <div class="gallery-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">Play Video →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="outfit">
+     <img src="Assets/webp/miss-chooloub-chooloub-1575413162-2191046872903691635-8706715131-0307.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="outfit">
+     <img src="Assets/webp/miss-chooloub-chooloub-1575676457-2193255546271212173-8706715131-0322.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="outfit">
+     <img src="Assets/webp/miss-chooloub-chooloub-1575926834-2195355859836887751-8706715131-0337.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1576798856-2202670915310102988-8706715131-0366.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="outfit">
+     <img src="Assets/webp/miss-chooloub-chooloub-1577142381-2205552609457487662-8706715131-0383.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1577650437-2209814496009267535-8706715131-0398.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile" data-category="photo">
+     <img src="Assets/webp/miss-chooloub-chooloub-1578098731-2213575056236737861-8706715131-0413.webp" alt="Miss Chooloub Media" loading="eager">
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">View →</span></div>
+    </div>
+    <div class="gallery-tile gallery-tile--video" data-category="video">
+     <video src="Assets/Vid_optimized/miss-chooloub-chooloub-1611459197-2493417653082220720-8706715131-032.mp4" preload="metadata" muted loop playsinline></video>
+     <div class="gallery-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+     <div class="gallery-tile-overlay"><span class="gallery-tile-caption">Play Video →</span></div>
+    </div>
+   </div>
+
+  </div>
+ </section>
+
+ <!-- FOOTER -->
+ <footer class="footer">
+  <div class="footer-inner">
+   <div class="footer-portrait">
+    <img src="Assets/Logo/Logo.jpg" alt="Miss Chooloub Logo" class="footer-logo">
+   </div>
+   <div class="footer-center">
+    <p class="footer-tagline">"Elegance is the only beauty that never fades"</p>
+   </div>
+   <div class="footer-socials">
+      <a href="https://www.patreon.com/chooloub?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnZ6oewG3zXr4uFzJ9KGKVev-VEeVadtp3zo4Igz9Ui0YmmITmmgxIVTxA6po_aem_offaF6tGp8tZAnpLwFe5dA" target="_blank" rel="noopener">Patreon</a>
+      <a href="https://www.instagram.com/chooloub" target="_blank" rel="noopener">@chooloub</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+   <span>© 2026 Miss Chooloub</span>
+   <span class="footer-divider">·</span>
+   <span>18+ Only</span>
+   <span class="footer-divider">·</span>
+   <a href="rules.html">Guidelines & Services</a>
+   <span class="footer-divider">·</span>
+   <a href="terms.html">Terms & Privacy</a>
+  </div>
+ </footer>
+
+ <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+ <script src="js/main.js?v=6.0"></script>
+ <script src="js/gallery-data.js?v=6.0"></script>
+ <script src="js/gallery.js?v=6.0"></script>
+</body>
+</html>
+
+
