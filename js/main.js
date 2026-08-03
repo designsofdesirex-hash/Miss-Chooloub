@@ -30,42 +30,89 @@ function safeSetStorage(key, value) {
 }
 
 function initAgeGate() {
-  const gate = document.getElementById('ageGate');
-  const enter = document.getElementById('ageEnter');
-  const leave = document.getElementById('ageLeave');
+  var gate = document.getElementById('ageGate');
   if (!gate) return;
 
-  const hideGate = () => {
+  var enter = document.getElementById('ageEnter');
+  var leave = document.getElementById('ageLeave');
+
+  function hideGate() {
     gate.classList.add('hidden');
+    gate.style.opacity = '0';
+    gate.style.pointerEvents = 'none';
     document.body.style.overflow = '';
-    setTimeout(() => {
+    setTimeout(function() {
       gate.style.display = 'none';
     }, 600);
-  };
+  }
 
-  if (safeGetStorage('ml_age_verified') === 'true') {
-    gate.classList.add('hidden');
+  // Check if already verified
+  var verified = false;
+  try { verified = localStorage.getItem('ml_age_verified') === 'true'; } catch(e) {}
+  if (!verified) {
+    try { verified = sessionStorage.getItem('ml_age_verified') === 'true'; } catch(e) {}
+  }
+
+  if (verified) {
     gate.style.display = 'none';
+    gate.style.opacity = '0';
+    gate.style.pointerEvents = 'none';
     document.body.style.overflow = '';
     return;
   }
 
+  // Show the gate
   document.body.style.overflow = 'hidden';
 
+  // Make sure buttons are clickable above everything
   if (enter) {
-    enter.addEventListener('click', (e) => {
-      e.preventDefault();
-      safeSetStorage('ml_age_verified', 'true');
-      hideGate();
-    });
+    enter.style.position = 'relative';
+    enter.style.zIndex = '10002';
+    enter.style.cursor = 'pointer';
+  }
+  if (leave) {
+    leave.style.position = 'relative';
+    leave.style.zIndex = '10002';
+    leave.style.cursor = 'pointer';
+  }
+
+  // Handler for ENTER
+  function handleEnter(e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    try { localStorage.setItem('ml_age_verified', 'true'); } catch(ex) {}
+    try { sessionStorage.setItem('ml_age_verified', 'true'); } catch(ex) {}
+    hideGate();
+  }
+
+  // Handler for LEAVE
+  function handleLeave(e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    window.location.href = 'https://google.com';
+  }
+
+  // Attach via addEventListener
+  if (enter) {
+    enter.addEventListener('click', handleEnter, false);
+    enter.addEventListener('touchend', handleEnter, false);
+    // Inline backup
+    enter.onclick = handleEnter;
   }
 
   if (leave) {
-    leave.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.href = 'https://google.com';
-    });
+    leave.addEventListener('click', handleLeave, false);
+    leave.addEventListener('touchend', handleLeave, false);
+    leave.onclick = handleLeave;
   }
+
+  // Event delegation fallback — listen on the gate itself
+  gate.addEventListener('click', function(e) {
+    var target = e.target;
+    if (target.id === 'ageEnter' || target.closest('#ageEnter')) {
+      handleEnter(e);
+    } else if (target.id === 'ageLeave' || target.closest('#ageLeave')) {
+      handleLeave(e);
+    }
+  }, false);
 }
 
 /* ------------------------------------------

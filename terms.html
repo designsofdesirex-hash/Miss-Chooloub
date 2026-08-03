@@ -8,7 +8,7 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="css/styles.css">
+ <link rel="stylesheet" href="css/styles.css?v=9.0">
 </head>
 <body>
 
@@ -17,8 +17,8 @@
    <div class="age-gate-logo">Miss Chooloub</div>
    <p class="age-gate-text">This site contains adult content.<br>You must be 18 or older to enter.</p>
    <div class="age-gate-actions">
-    <button class="btn btn-primary" id="ageEnter">E N T E R</button>
-    <button class="btn btn-ghost" id="ageLeave">L E A V E</button>
+    <button class="btn btn-primary" id="ageEnter" onclick="try{localStorage.setItem('ml_age_verified','true')}catch(e){};var g=document.getElementById('ageGate');if(g){g.style.display='none'};document.body.style.overflow=''">E N T E R</button>
+    <button class="btn btn-ghost" id="ageLeave" onclick="window.location.href='https://google.com'">L E A V E</button>
    </div>
   </div>
  </div>
@@ -127,7 +127,7 @@
 
  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
- <script src="js/main.js"></script>
+ <script src="js/main.js?v=9.0"></script>
 </body>
 </html>
 
