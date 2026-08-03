@@ -48,7 +48,7 @@
    </a>
    
   </div>
-  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" onclick="this.classList.toggle('active');var nl=document.getElementById('navLinks');if(nl){nl.classList.toggle('active');document.body.style.overflow=nl.classList.contains('active')?'hidden':''}">
    <span></span><span></span><span></span>
   </button>
  </nav>

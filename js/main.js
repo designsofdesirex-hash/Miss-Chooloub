@@ -119,16 +119,16 @@ function initAgeGate() {
    2. NAVIGATION SCROLL BEHAVIOUR
    ------------------------------------------ */
 function initNav() {
-  const nav = document.getElementById('nav');
-  const hamburger = document.getElementById('navHamburger');
-  const navLinks = document.getElementById('navLinks');
+  var nav = document.getElementById('nav');
+  var hamburger = document.getElementById('navHamburger');
+  var navLinks = document.getElementById('navLinks');
   if (!nav) return;
 
   // Scroll: transparent → solid
-  let ticking = false;
-  window.addEventListener('scroll', () => {
+  var ticking = false;
+  window.addEventListener('scroll', function() {
     if (!ticking) {
-      requestAnimationFrame(() => {
+      requestAnimationFrame(function() {
         if (window.scrollY > 80) {
           nav.classList.add('nav-solid');
         } else {
@@ -142,15 +142,26 @@ function initNav() {
 
   // Mobile hamburger toggle
   if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
+    // Ensure hamburger is above everything
+    hamburger.style.position = 'relative';
+    hamburger.style.zIndex = '9999';
+
+    function toggleMenu() {
       hamburger.classList.toggle('active');
       navLinks.classList.toggle('active');
       document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-    });
+    }
+
+    hamburger.addEventListener('click', toggleMenu, false);
+    hamburger.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      toggleMenu();
+    }, false);
+    hamburger.onclick = toggleMenu;
 
     // Close on link click
-    navLinks.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
+    navLinks.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function() {
         hamburger.classList.remove('active');
         navLinks.classList.remove('active');
         document.body.style.overflow = '';
@@ -278,6 +289,7 @@ function initGalleryFilter() {
    7. SPECIALTIES FADE ANIMATION
    ------------------------------------------ */
 function initSpecialtiesFade() {
+  if (typeof gsap === 'undefined') return;
   const items = document.querySelectorAll('.specialty-item');
   if (items.length === 0) return;
 
@@ -389,7 +401,7 @@ function initHomepageHighlights() {
     
     if (item.type === 'video') {
       tile.innerHTML = `
-        <video src="${item.src}" poster="${item.poster || \'\'}" preload="metadata" muted loop playsinline></video>
+        <video src="${item.src}" poster="${item.poster || ''}" preload="metadata" muted loop playsinline></video>
         <div class="gallery-play-icon">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </div>
@@ -415,15 +427,15 @@ function initHomepageHighlights() {
 /* ------------------------------------------
    11. INIT EVERYTHING
    ------------------------------------------ */
-document.addEventListener('DOMContentLoaded', () => {
-  initAgeGate();
-  initNav();
-  initSmoothScroll();
-  initCursor();
-  initScrollAnimations();
-  initGalleryFilter();
-  initSpecialtiesFade();
-  initTestimonialCarousel();
-  initIntroSlideshow();
-  initHomepageHighlights();
+document.addEventListener('DOMContentLoaded', function() {
+  try { initAgeGate(); } catch(e) {}
+  try { initNav(); } catch(e) {}
+  try { initSmoothScroll(); } catch(e) {}
+  try { initCursor(); } catch(e) {}
+  try { initScrollAnimations(); } catch(e) {}
+  try { initGalleryFilter(); } catch(e) {}
+  try { initSpecialtiesFade(); } catch(e) {}
+  try { initTestimonialCarousel(); } catch(e) {}
+  try { initIntroSlideshow(); } catch(e) {}
+  try { initHomepageHighlights(); } catch(e) {}
 });
