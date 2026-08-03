@@ -43,6 +43,9 @@ function initAgeGate() {
     document.body.style.overflow = '';
     setTimeout(function() {
       gate.style.display = 'none';
+      if (typeof ScrollTrigger !== 'undefined') {
+        try { ScrollTrigger.refresh(); } catch(e) {}
+      }
     }, 600);
   }
 
@@ -225,57 +228,90 @@ function initCursor() {
 }
 
 /* ------------------------------------------
-   5. GSAP SCROLL ANIMATIONS
+   5. GSAP SCROLL ANIMATIONS (WITH NATIVE FALLBACK)
    ------------------------------------------ */
 function initScrollAnimations() {
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Individual reveals
   const reveals = document.querySelectorAll('.reveal');
-  reveals.forEach(el => {
-    gsap.fromTo(el,
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1, y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
-          once: true
+
+  // Fallback function to show all reveals if GSAP is unavailable or fails
+  function showAllReveals() {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'none';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      reveals.forEach(el => observer.observe(el));
+      document.querySelectorAll('.features, .testimonials, .gallery-grid, .services-grid').forEach(grid => {
+        Array.from(grid.children).forEach(child => observer.observe(child));
+      });
+    } else {
+      reveals.forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }
+  }
+
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    showAllReveals();
+    return;
+  }
+
+  try {
+    gsap.registerPlugin(ScrollTrigger);
+
+    reveals.forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            once: true
+          }
         }
-      }
-    );
-  });
+      );
+    });
 
-  // Staggered reveals for grid children
-  const grids = [
-    '.features', '.testimonials', '.gallery-grid', '.services-grid'
-  ];
+    const grids = ['.features', '.testimonials', '.gallery-grid', '.services-grid'];
 
-  grids.forEach(selector => {
-    const grid = document.querySelector(selector);
-    if (!grid) return;
-    const children = grid.children;
-    if (!children.length) return;
+    grids.forEach(selector => {
+      const grid = document.querySelector(selector);
+      if (!grid) return;
+      const children = grid.children;
+      if (!children.length) return;
 
-    gsap.fromTo(children,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1, y: 0,
-        duration: 0.8,
-        stagger: 0.12,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: grid,
-          start: 'top 85%',
-          once: true
+      gsap.fromTo(children,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: grid,
+            start: 'top 85%',
+            once: true
+          }
         }
-      }
-    );
-  });
+      );
+    });
+
+    setTimeout(() => {
+      try { ScrollTrigger.refresh(); } catch(e) {}
+    }, 500);
+  } catch (err) {
+    showAllReveals();
+  }
 }
 
 /* ------------------------------------------
@@ -289,36 +325,52 @@ function initGalleryFilter() {
    7. SPECIALTIES FADE ANIMATION
    ------------------------------------------ */
 function initSpecialtiesFade() {
-  if (typeof gsap === 'undefined') return;
   const items = document.querySelectorAll('.specialty-item');
   if (items.length === 0) return;
 
-  gsap.set(items, { opacity: 0, filter: 'blur(20px)', scale: 0.95 });
+  if (typeof gsap === 'undefined') {
+    items.forEach(item => {
+      item.style.opacity = '1';
+      item.style.filter = 'none';
+      item.style.transform = 'none';
+    });
+    return;
+  }
 
-  const tl = gsap.timeline({ repeat: -1 });
+  try {
+    gsap.set(items, { opacity: 0, filter: 'blur(20px)', scale: 0.95 });
 
-  items.forEach((item, index) => {
-    const startTime = index * 3.5;
+    const tl = gsap.timeline({ repeat: -1 });
 
-    tl.to(item, {
-      opacity: 1,
-      filter: 'blur(0px)',
-      scale: 1,
-      duration: 1.5,
-      ease: 'power2.out'
-    }, startTime)
-    .to(item, {
-      scale: 1.05,
-      duration: 2,
-      ease: 'none'
-    }, startTime + 1.5)
-    .to(item, {
-      opacity: 0,
-      filter: 'blur(20px)',
-      duration: 1.5,
-      ease: 'power2.in'
-    }, startTime + 2.5);
-  });
+    items.forEach((item, index) => {
+      const startTime = index * 3.5;
+
+      tl.to(item, {
+        opacity: 1,
+        filter: 'blur(0px)',
+        scale: 1,
+        duration: 1.5,
+        ease: 'power2.out'
+      }, startTime)
+      .to(item, {
+        scale: 1.05,
+        duration: 2,
+        ease: 'none'
+      }, startTime + 1.5)
+      .to(item, {
+        opacity: 0,
+        filter: 'blur(20px)',
+        duration: 1.5,
+        ease: 'power2.in'
+      }, startTime + 2.5);
+    });
+  } catch (e) {
+    items.forEach(item => {
+      item.style.opacity = '1';
+      item.style.filter = 'none';
+      item.style.transform = 'none';
+    });
+  }
 }
 
 /* ------------------------------------------
@@ -401,7 +453,7 @@ function initHomepageHighlights() {
     
     if (item.type === 'video') {
       tile.innerHTML = `
-        <video src="${item.src}" poster="${item.poster || ''}" preload="metadata" muted loop playsinline></video>
+        <video src="${item.src}" poster="${item.poster || \'\'}" preload="metadata" muted loop playsinline></video>
         <div class="gallery-play-icon">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </div>
@@ -427,15 +479,15 @@ function initHomepageHighlights() {
 /* ------------------------------------------
    11. INIT EVERYTHING
    ------------------------------------------ */
-document.addEventListener('DOMContentLoaded', function() {
-  try { initAgeGate(); } catch(e) {}
-  try { initNav(); } catch(e) {}
-  try { initSmoothScroll(); } catch(e) {}
-  try { initCursor(); } catch(e) {}
-  try { initScrollAnimations(); } catch(e) {}
-  try { initGalleryFilter(); } catch(e) {}
-  try { initSpecialtiesFade(); } catch(e) {}
-  try { initTestimonialCarousel(); } catch(e) {}
-  try { initIntroSlideshow(); } catch(e) {}
-  try { initHomepageHighlights(); } catch(e) {}
+document.addEventListener('DOMContentLoaded', () => {
+  initAgeGate();
+  initNav();
+  initSmoothScroll();
+  initCursor();
+  initScrollAnimations();
+  initGalleryFilter();
+  initSpecialtiesFade();
+  initTestimonialCarousel();
+  initIntroSlideshow();
+  initHomepageHighlights();
 });
