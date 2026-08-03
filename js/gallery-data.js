@@ -2091,7 +2091,7 @@ window.GALLERY_IMAGES = [
     "id": "img-222",
     "type": "image",
     "category": "photo",
-    "src": "Assets/webp/miss-chooloub-chooloub-1569255414-2139391935369297427-8706715131-0014.webp",
+    "src": "Assets/webp/miss-chooloub-chooloub-1689422632-3147427618972902891-8706715131-1822.webp",
     "title": "Photo #222",
     "size_fmt": "101.0 KB",
     "size_bytes": 103462
@@ -5232,7 +5232,7 @@ window.GALLERY_IMAGES = [
     "id": "img-571",
     "type": "image",
     "category": "photo",
-    "src": "Assets/webp/miss-chooloub-chooloub-1569255414-2139391935369297427-8706715131-0014.webp",
+    "src": "Assets/webp/miss-chooloub-chooloub-1689422632-3147427618972902891-8706715131-1822.webp",
     "title": "Photo #571",
     "size_fmt": "137.5 KB",
     "size_bytes": 140766
@@ -8373,7 +8373,7 @@ window.GALLERY_IMAGES = [
     "id": "img-920",
     "type": "image",
     "category": "photo",
-    "src": "Assets/webp/miss-chooloub-chooloub-1569255414-2139391935369297427-8706715131-0014.webp",
+    "src": "Assets/webp/miss-chooloub-chooloub-1689422632-3147427618972902891-8706715131-1822.webp",
     "title": "Photo #920",
     "size_fmt": "70.2 KB",
     "size_bytes": 71860
@@ -11514,7 +11514,7 @@ window.GALLERY_IMAGES = [
     "id": "img-1269",
     "type": "image",
     "category": "photo",
-    "src": "Assets/webp/miss-chooloub-chooloub-1569255414-2139391935369297427-8706715131-0014.webp",
+    "src": "Assets/webp/miss-chooloub-chooloub-1689422632-3147427618972902891-8706715131-1822.webp",
     "title": "Photo #1269",
     "size_fmt": "104.7 KB",
     "size_bytes": 107215
@@ -14655,7 +14655,7 @@ window.GALLERY_IMAGES = [
     "id": "img-1618",
     "type": "image",
     "category": "photo",
-    "src": "Assets/webp/miss-chooloub-chooloub-1569255414-2139391935369297427-8706715131-0014.webp",
+    "src": "Assets/webp/miss-chooloub-chooloub-1689422632-3147427618972902891-8706715131-1822.webp",
     "title": "Photo #1618",
     "size_fmt": "201.8 KB",
     "size_bytes": 206647
